@@ -15,26 +15,26 @@ module ServiceRunner
     method_option :env, :type => :string
     method_option :log, :type => :string
 
-    def start(service)
-      puts "Starting #{service}"
-      command Sidekiq.new(options).start_command
+    def start(service_name)
+      puts "Starting #{service_name}"
+      command Service.get(service_name).start(@options)
     end
 
     # Stop
     desc "stop SERVICE", "Stop a given service"
 
-    def stop(service)
-      puts "Stopping #{service}"
-      command Sidekiq.new(options).stop_command
+    def stop(service_name)
+      puts "Stopping #{service_name}"
+      command Service.get(service_name).stop(@options)
     end
 
     # Helpers
     no_tasks do
-      def command(string)
+      def command(result)
         if test?
-          puts string
+          puts result
         else
-          run string
+          run result
         end
       end
 
