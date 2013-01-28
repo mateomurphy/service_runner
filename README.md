@@ -1,6 +1,6 @@
 # ServiceRunner
 
-TODO: Write a gem description
+Easily run services for rails apps
 
 ## Installation
 
@@ -18,7 +18,12 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+with Monit
+
+    check process service_name
+      with pidfile /path/to/app/tmp/pids/service_name.pid
+      start program = "su - neken -c 'cd /path/to/app/ && thor services:start service_name'"
+      stop program = "su - neken -c 'cd /path/to/app/ && thor services:stop service_name'"
 
 ## Contributing
 
