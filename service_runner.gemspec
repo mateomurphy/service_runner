@@ -14,4 +14,5 @@ Gem::Specification.new do |gem|
   gem.name          = "service_runner"
   gem.require_paths = ["lib"]
   gem.version       = ServiceRunner::VERSION
+  gem.add_dependency 'thor'
 end
