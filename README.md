@@ -4,21 +4,22 @@ Easily run services for rails apps
 
 ## Installation
 
-Add this line to your application's Gemfile:
-
-    gem 'service_runner'
-
-And then execute:
-
-    $ bundle
-
-Or install it yourself as:
+Install it systemwide:
 
     $ gem install service_runner
 
 ## Usage
 
-Doesn't work properly yet. Working on it.
+Not quite working properly in all cases, but in theory:
+
+with Monit
+ 
+    check process service_name
+      with pidfile /path/to/app/tmp/pids/service_name.pid
+      start program = "su - user -c 'cd /path/to/app/ && /path/to/service_runner start service_name'"
+      stop program = "su - user -c 'cd /path/to/app/ && /path/to/service_runner stop service_name'"
+
+Services currently supported are `delayed_job` and `sidekiq`
 
 ## Contributing
 
