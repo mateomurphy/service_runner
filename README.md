@@ -16,8 +16,8 @@ with Monit
  
     check process service_name
       with pidfile /path/to/app/tmp/pids/service_name.pid
-      start program = "su - user -c 'cd /path/to/app/ && /path/to/service_runner start service_name'"
-      stop program = "su - user -c 'cd /path/to/app/ && /path/to/service_runner stop service_name'"
+      start program = "/bin/su - user -c 'cd /path/to/app/ && /path/to/service_runner start service_name'"
+      stop program = "/bin/su - user -c 'cd /path/to/app/ && /path/to/service_runner stop service_name'"
 
 Services currently supported are `delayed_job` and `sidekiq`
 
