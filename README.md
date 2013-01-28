@@ -18,12 +18,7 @@ Or install it yourself as:
 
 ## Usage
 
-with Monit
-
-    check process service_name
-      with pidfile /path/to/app/tmp/pids/service_name.pid
-      start program = "su - user -c 'cd /path/to/app/ && thor services:start service_name'"
-      stop program = "su - user -c 'cd /path/to/app/ && thor services:stop service_name'"
+Doesn't work properly yet. Working on it.
 
 ## Contributing
 
