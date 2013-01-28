@@ -1,5 +1,6 @@
 # -*- encoding: utf-8 -*-
-require File.expand_path('../lib/service_runner/version', __FILE__)
+$:.push File.expand_path("../lib", __FILE__)
+require 'service_runner/version'
 
 Gem::Specification.new do |gem|
   gem.authors       = ["Mateo Murphy"]
