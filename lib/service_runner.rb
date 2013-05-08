@@ -10,7 +10,7 @@ module ServiceRunner
   end
 
   Service.define('sidekiq') do |s|
-    s.start_command = "nohup :bundle sidekiq -e ':env' -P ':pid' >> :log 2>&1 &"
+    s.start_command = "nohup :bundle sidekiq -c 10 -e ':env' -P ':pid' >> :log 2>&1 &"
     s.stop_command  = ":bundle sidekiqctl stop ':pid' 30 >> :log 2>&1"
   end
 end
