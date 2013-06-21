@@ -22,7 +22,9 @@ module ServiceRunner
 
     # Stop
     desc "stop SERVICE", "Stop a given service"
-
+    method_option :env, :type => :string
+    method_option :log, :type => :string
+        
     def stop(service_name)
       puts "Stopping #{service_name}"
       command Service.get(service_name).stop(@options)
