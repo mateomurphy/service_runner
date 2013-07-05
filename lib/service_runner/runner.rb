@@ -2,19 +2,13 @@ module ServiceRunner
   class Runner < Thor
     include Thor::Actions
 
-    map '-e' => :env
-    map '-p' => :pid
-    map '-l' => :log
-    map '-t' => :test
-
-    class_option :pid, :type => :string
-    class_option :test, :type => :boolean, :default => false
+    class_option :env, :type => :string, :aliases => '-e', :desc => "The Rails environment to use"
+    class_option :log, :type => :string, :aliases => '-l', :desc => "The path to use for the log file"
+    class_option :pid, :type => :string, :aliases => '-p', :desc => "The path to use for the pid file"
+    class_option :test, :type => :boolean, :default => false, :aliases => '-t', :desc => "Operate in test mode"
 
     # Start
     desc "start SERVICE", "Start a given service"
-    method_option :env, :type => :string
-    method_option :log, :type => :string
-
     def start(service_name)
       puts "Starting #{service_name}"
       command Service.get(service_name).start(@options)
@@ -22,9 +16,6 @@ module ServiceRunner
 
     # Stop
     desc "stop SERVICE", "Stop a given service"
-    method_option :env, :type => :string
-    method_option :log, :type => :string
-        
     def stop(service_name)
       puts "Stopping #{service_name}"
       command Service.get(service_name).stop(@options)
